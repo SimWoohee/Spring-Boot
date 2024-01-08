@@ -17,9 +17,18 @@ public class RollbackTest {
 
     @Test
     void runtimeExcetion(){
-        rollbackService.runtimeException();
+        Assertions.assertThatThrownBy(() -> rollbackService.runtimeException())
+                        .isInstanceOf(RuntimeException.class);
+        //2024-01-09 01:55:35.346 DEBUG 7056 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction rollback
     }
 
+    @Test
+    void checkedException(){
+        Assertions.assertThatThrownBy(() -> rollbackService.checkedException())
+                .isInstanceOf(MyException.class);
+
+        //2024-01-09 02:01:05.063 DEBUG 14456 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+    }
 
     @TestConfiguration
     static class RollbackTestConfig{
