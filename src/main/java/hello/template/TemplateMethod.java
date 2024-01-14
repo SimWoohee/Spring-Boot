@@ -45,13 +45,40 @@ public class TemplateMethod {
         //logic2();
 
         //templatePattern 적용
-        TemplatePattern templatePattern = new SubClassLogic1();
-        templatePattern.execute();
+//        TemplatePattern templatePattern = new SubClassLogic1();
+//        templatePattern.execute();
+//
+//
+//        TemplatePattern templatePattern2 = new SubClassLogic2();
+//        templatePattern2.execute();\
 
+        templateMethodV2();
 
-        TemplatePattern templatePattern2 = new SubClassLogic2();
-        templatePattern2.execute();
 
     }
+
+    public static void templateMethodV2(){
+
+        TemplatePattern templatePatternV1 = new TemplatePattern() {
+            @Override
+            protected void call() {
+                log.info("비즈니스 로직1 실행");
+            }
+        };
+
+        templatePatternV1.execute();
+
+        TemplatePattern templatePatternV2 = new TemplatePattern() {
+            @Override
+            protected void call() {
+                log.info("비즈니스 로직2 실행");
+            }
+        };
+
+        templatePatternV2.execute();
+
+
+    }
+
 
 }
