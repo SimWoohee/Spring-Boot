@@ -19,6 +19,7 @@ public class CacheProxy implements Subject{
 
         //처음 호출시 cacheValue value는 null 이기때문에 실제 객체(target)를 호출하고
         //두번째 호출시에는 cacheValue가 null이 아니라서 cacheProxy에 있는 값을 return 한다.
+        // => 접근제어
 
         log.info("프록시 호출");
         if(cacheValue == null){
